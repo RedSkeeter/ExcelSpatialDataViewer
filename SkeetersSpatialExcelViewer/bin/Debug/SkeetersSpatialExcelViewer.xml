@@ -1,0 +1,178 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SkeetersSpatialExcelViewer
+</name>
+</assembly>
+<members>
+<member name="M:SkeetersSpatialExcelViewer.Form1.ApplyPolygonLayerStyle(DotSpatial.Controls.Map,DotSpatial.Controls.IMapPolygonLayer,System.String,System.Drawing.Color,System.Drawing.Font,System.Drawing.Color,System.Drawing.Color,System.Single)">
+	<summary>
+ Applies styling and labeling to a MapPolygonLayer. 
+ </summary>
+	<param name="Map">Dotspatial Map</param>
+	<param name="PolygonLayer">MapPolygonLayer. IMapPolygonLayer</param>
+	<param name="LabelColumnName">Column name to use for labeling. String.</param>
+	<param name="LabelColor">Label color. System.Drawing.Color</param>
+	<param name="LabelFont"></param>
+	<param name="LayerFillColor">Fill color. System.Drawing.Color</param>
+	<param name="LayerOutlineColor">Outline color. System.Drawing.Color</param>
+	<param name="Opacity">Transparency of the fill color. 0=transparent, 1=opaque. Single</param>
+	<remarks>This is a utility function for quickly applying styles and labels to polygon layers.</remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.LoadPreferredBaseMap(DotSpatial.Controls.Map)">
+	<summary>
+ Loads the preferred base map shapefile into the map.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.RemovePointsLayer">
+	<summary>
+ Removes the layer containing the imported points from the map
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.LoadWorksheetsComboboxes(System.Collections.Generic.List{System.String},System.String)">
+	<summary>
+ Loads Excel worksheet names into the form's WorksheetToolStripComboBox
+ </summary>
+	<param name="WorkSheetsList">List of worksheet names. List(Of String)</param>
+	<param name="SelectedWorksheetName">Name of the currently selected worksheet.  Optional.  This is the name of the worksheet that will appear in the ComboBox. String</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.ImportDataFromExcel(System.String,System.String)">
+	<summary>
+ Loads an Excel worksheet into the main DataGridView.
+ </summary>
+	<param name="Workbook">Full path to the Excel workbook to import</param>
+	<param name="WorkSheet">Name of the worksheet to use</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.LoadColumnNamesIntoComboboxes(System.Data.DataTable)">
+	<summary>
+ Loads the  lat/lon column name combo boxes with column names from SpatialDataTable
+ </summary>
+	<param name="SpatialDataTable">DataTable containing latitude and longitude columns</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.NegifyLonColumn(System.Data.DataTable,System.String)">
+	<summary>
+ Multiplies each value in the main DataGridView's selected Longitude column by -1 (sometimes longitude is reported in the western hemisphere with positive values, 
+ this routine corrects such a problem).
+ </summary>
+	<param name="DataTable">DataTable containing a longitude column</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.GetLayerIndex(System.String)">
+	<summary>
+ Returns the index of a map layer determined by the layer's legend text.
+ </summary>
+	<param name="LayerLegendText">Legend text of the layer</param>
+	<returns>Integer</returns>
+	<remarks>Seems silly to get a layer index this way but it's the only way I found to do it.</remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.ImportShapefile(System.String,System.Drawing.Color,System.Drawing.Color)">
+	<summary>
+ Adds a shapefile to the map.
+ </summary>
+	<param name="Shapefile">Path to shapefile. String</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.EnableMapping">
+	<summary>
+ Validates that the application has a workbook and lat/lon column names to work with before enabling the Map it button
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.HighlightSelectedColumns">
+	<summary>
+ Highlights the selected Lat/Lon columns in the main DataGridView
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.ImportDataFromDBF(System.String)">
+	<summary>
+ Imports a .dbf file 
+ </summary>
+	<param name="DBFFile">.dbf file to import. String. Full path.</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.ImportDataFromCSV(System.String)">
+	<summary>
+ Imports a comma separated values text file.
+ </summary>
+	<param name="CSVFile">.csv file to import. Full path.</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.ImportData(System.String)">
+	<summary>
+ Imports data
+ </summary>
+	<param name="File">Data source to import.  Full path to data file. String</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.ExportMapImage(DotSpatial.Controls.Map,System.String)">
+	<summary>
+ Exports Map as an image.
+ </summary>
+	<param name="Map">A DotSpatial map. DotSpatial.Controls.Map</param>
+	<param name="Filename">Full path and filename of image to be exported. String.</param>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.GetLayerFeaturesetDatatable(DotSpatial.Controls.Map,System.Int32)">
+	<summary>
+ Returns a map layer's featureset's DataTable
+ </summary>
+	<param name="Map">A DotSpatial Map</param>
+	<returns>DataTable of the Layer's Featureset's attributes</returns>
+	<remarks>
+ Use this function to get at a Layer's attributes.  A DotSpatial Layer does not have an attribute table (strangely enough).  
+ Getting to a Layer's attributes involves casting the Layer as a FeatureSet, then getting a handle on the FeatureSet's DataSet and then 
+ grabbing it's DataTable.  Confusing, huh?
+ </remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.Form1.StyleLayer(DotSpatial.Controls.Map,System.Int32)">
+	<summary>
+ Styles the map layer at position LayerIndex
+ </summary>
+	<param name="Map">A DotSpatial Map</param>
+	<param name="LayerIndex">Index of a layer in the Map's Layers collection</param>
+	<remarks></remarks>
+</member><member name="P:SkeetersSpatialExcelViewer.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:SkeetersSpatialExcelViewer.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:SkeetersSpatialExcelViewer.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:SkeetersSpatialExcelViewer.DBFDataTable.GetDataTableFromDBF(System.String)">
+	<summary>
+ Extracts a DataTable from a DBF file
+ </summary>
+	<param name="DBF">Full path to DBF to transform. String</param>
+	<returns>DataTable</returns>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.DBFDataTable.GetExcelConnection(System.String)">
+	<summary>
+ Returns an OleDbConnection to the supplied Excel workbook
+ </summary>
+	<param name="Workbook">Full path to an Excel workbook</param>
+	<returns>OleDbConnection</returns>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.DBFDataTable.GetDataTableFromExcelWorkbook(System.String,System.String)">
+	<summary>
+ Transforms the Excel workbook into a DataTable
+ </summary>
+	<param name="Workbook">Full path to an Excel workbook. String</param>
+	<param name="Worksheet">Worksheet name. Required. String</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.DBFDataTable.GetWorksheetsFromExcelWorkbook(System.Data.OleDb.OleDbConnection)">
+	<summary>
+ Returns a list of worksheets in the Excel workbook
+ </summary>
+	<param name="WorkbookConnection">An OleDbConnection to an Excel workbook. OleDbConnection.</param>
+	<returns>Worksheets list. List(Of String)</returns>
+	<remarks></remarks>
+</member><member name="M:SkeetersSpatialExcelViewer.DBFDataTable.GetCleanSpatialDataTable(System.Data.DataTable,System.String,System.String)">
+	<summary>
+ Cleans a spatial DataTable.  Cycles through each record and ensures the X and Y coordinate columns 
+ </summary>
+	<param name="SpatialDataTable"></param>
+	<param name="XColumnName"></param>
+	<param name="YColumnName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
